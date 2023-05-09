@@ -1,0 +1,10 @@
+torch
+numpy
+scikit-image
+xgboost
+pillow
+opencv-python
+scipy
+torchmetrics
+tqdm
+
