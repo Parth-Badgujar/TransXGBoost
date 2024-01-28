@@ -9,13 +9,19 @@ from tqdm import tqdm
 import torchvision.transforms as T
 import cv2
 import time
+import argparse
 from scipy.stats import gaussian_kde
 from sklearn.neighbors import KernelDensity
 from skimage.restoration import denoise_wavelet
 from xgboost import XGBRegressor
 
-path_to_test = sys.argv[1]
-path_to_result = sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument('-o', '--output', help = 'Directory of output images')
+parser.add_argument('-i', '--input', help = 'Directory of input images')
+args = parser.parse_args()
+
+path_to_test = args.input
+path_to_result = args.output
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 if device == torch.device('cuda') :
